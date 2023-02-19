@@ -1,0 +1,33 @@
+<h1 id="tableLabel">Brand Compare</h1>
+
+<label for="dateCompare">Choose date to compare brands:</label>
+<input type="date" id="dateCompare" name="dateCompare" (change)="onDateChange($event)">
+<br />
+<hr />
+<br />
+<div *ngIf="status">
+  <p *ngIf="status==1">Waiting...</p>
+  <div *ngIf="status==2">
+    <p *ngIf="!brands">No brands!</p>
+
+    <table *ngIf="brands">
+      <thead>
+        <tr>
+          <th>Brand Name</th>
+          <th>Total Profiles</th>
+          <th>Total Fans</th>
+          <th>Total Engagement</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let brand of brands">
+          <td>{{ brand.brandName }}</td>
+          <td>{{ brand.totalProfiles }}</td>
+          <td>{{ brand.totalFans }}</td>
+          <td>{{ brand.totalEngagement }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
